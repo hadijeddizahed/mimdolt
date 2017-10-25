@@ -1,0 +1,11 @@
+<li >
+    <span ng-class="node.childrenVisibility && node.children.length ?'fa fa-plus':'fa fa-minus'"
+             ng-click="toggleVisibility(node)">
+    </span>
+    <span>
+        {{ $index + 1 }}. {{ node.name }}
+    </span>
+    <span>
+         {{ node.description }}
+    </span>
+</li>

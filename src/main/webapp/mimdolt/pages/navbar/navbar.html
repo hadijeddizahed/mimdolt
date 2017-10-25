@@ -1,0 +1,159 @@
+<!--suppress ALL -->
+<style>
+    .dropdown-toggle:hover > .dropdown-menu {
+        display: block;
+    }
+</style>
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed"
+                            ng-click="vm.isNavCollapsed = !vm.isNavCollapsed">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Logo -->
+                    <a class="navbar-brand" href="./index.html"><img src="/resources/images/basic/logo1.png"
+                                                                     class="img-responsive" alt=""/></a>
+                </div>
+
+                <!-- Cart & Search -->
+                <div class="header-xtra pull-right">
+
+                    <div class="topcart">
+                        <span>
+                             <label class="labelCount">{{vm.cartDetail.length}}</label>
+                            <i class="fa fa-shopping-cart"></i>
+                        </span>
+
+                        <div class="mini-cart-content">
+                            <div class="cart-info cart-info-hidden">
+                                <strong style="color: #595959">
+                                    <em class="highlight">{{vm.cartDetail.length}}</em> قلم در سبد خرید شما وجود دارد
+                                </strong>
+
+                                <div class="space20 sep"></div>
+                                <div class="ci-item" ng-repeat="cart in vm.cartDetail">
+                                    <img class="thumbnail"
+                                         ng-src="/api/display/{{cart.defaultImage.code}}/SMALL/{{cart.defaultImage.imageName}}"
+                                         width="80" height="120"
+                                         alt=""/>
+
+                                    <div class="ci-item-info">
+                                        <h5><a href="./single-product.html">{{cart.productName}}</a></h5>
+
+                                        <p ng-init="vm.totalPrice = vm.totalPrice + (cart.price * cart.quantity)">
+                                            {{cart.price + '*' + cart.quantity}}</p>
+
+                                        <div ng-repeat="attr in cart.attributeNameValues">
+                                            <p style="direction: rtl;">{{attr.optionName}}
+                                                :<strong>{{attr.optionValue}}</strong></p>
+                                        </div>
+                                        <div class="ci-edit">
+                                            <a href="#" class="edit fa fa-edit"></a>
+                                            <a href="#" ng-click="vm.deleteItem(cart.code)"
+                                               class="edit fa fa-trash"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="total-info">
+                                <div style="position: fixed" class="ci-total">جمع خرید شما &nbsp;&nbsp; {{vm.totalPrice
+                                    | number}} &nbsp; تومان
+                                </div>
+                                <div style="position: fixed;" class="cart-btn">
+
+                                    <a class="btn-color btn btn-secondary btn-lg"
+                                       style="font-size: 16px;font-weight: bold"
+                                       href="/shopping-cart">مشاهده سبد خرید</a>
+                                    <a class="btn-color btn btn-secondary btn-lg"
+                                       style="font-size: 16px;font-weight: bold" href="#">ثبت سفارش </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="topsearch">
+                                    <span>
+                                        <i class="fa fa-search"></i>
+                                    </span>
+
+                        <form class="searchtop">
+                            <input type="text" placeholder="Search entire store here.">
+                        </form>
+                    </div>
+                </div>
+                <!-- Navmenu -->
+                <div class="collapse navbar-collapse" uib-collapse="vm.isNavCollapsed"
+                     id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav pull-right">
+                        <li class="dropdown" ng-class="{'mmenu':category.children.length > 10}" uib-dropdown
+                            ng-repeat="category in vm.categories">
+                            <a ng-if="category.children.length != 0" href="#" uib-dropdown-toggle
+                               is-open="vm.status.isopen" class="dropdown-toggle active" data-toggle="dropdown"
+                               role="button">{{category.name}}</a>
+                            <a ng-if="category.children.length == 0" ng-href='/store/category/{{category.code}}/page/0'>{{category.name}}</a>
+                            <ul uib-dropdown-menu ng-class="{'mega-menu': category.children.length > 10}"
+                                class="dropdown-menu submenu" role="menu">
+                                <li ng-if="category.children.length < 10"
+                                    ng-repeat="child in category.children | orderBy:'name'">
+                                    <a href="/store/category/{{child.code}}/page/0?pageSize=9&orderBy=default">{{child.name}}</a>
+                                </li>
+                                <li ng-if="category.children.length > 10"
+                                    ng-repeat="i in vm.count(category.children) track by $index">
+                                    <div>
+
+                                        <a ng-repeat="child in category.children.slice((i*10),(i+1)*10) | orderBy:'name'"
+                                           href="/store/category/{{child.code}}/page/0?pageSize=9&orderBy=default">{{child.name}} </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a></a></li>
+                        <li><a></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<state-loader force-show="showLoader"><img src="/resources/images/loading.gif"></state-loader>
+<div class="clearfix space20"></div>
+<script type='text/ng-template' id="lastItem.html">
+    <div >
+        <div class="cart-inf">
+            <span style="margin-right: 38%;"><strong>یک قلم به سبد خرید شما اضافه شد. </strong></span>
+            <div class="space20 sep"></div>
+            <div class="ci-item">
+                <img class="thumbnail"
+                     ng-src="/api/display/{{lastCartItem.defaultImage.code}}/SMALL/{{lastCartItem.defaultImage.imageName}}"
+                     width="80" height="120"
+                     alt=""/>
+
+                <div class="ci-item-info">
+                    <h5><a href="./single-product.html">{{ lastCartItem.productName}}</a></h5>
+
+                    <p>{{lastCartItem.price + '*' + lastCartItem.quantity}}</p>
+
+                    <div ng-repeat="attr in  lastCartItem.attributeNameValues">
+                        <p style="direction: rtl;">{{attr.optionName}}
+                            :<strong>{{attr.optionValue}}</strong></p>
+                    </div>
+                    <div style="position: fixed;" class="cart-btn2">
+
+                        <a class="btn-color btn btn-secondary btn-lg"
+                           style="font-size: 16px;font-weight: bold"
+                           href="/shopping-cart" ng-click="ngDialog.close()">ثبت سفارش</a>
+                        <a class="btn-color btn btn-secondary btn-lg"
+                           style="font-size: 16px;font-weight: bold" href="#" ng-click="ngDialog.close()">بازگشت به صفحه محصولات </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+

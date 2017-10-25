@@ -1,0 +1,117 @@
+<!-- TOPBAR -->
+<div class="top_bar">
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <div class="col-md-12">
+                    <div access="admin" class="tb_left pull-left">
+
+                    </div>
+                    <div class="tb_left pull-left">
+                        <p>خوش آمدید </p>
+                    </div>
+                    <div class="tb_center pull-left">
+                        <ul>
+                            <li><i class="fa fa-phone"></i>&nbsp;شماره پشتیبانی: <span href="#">5212 333 912 98+</span>
+                            </li>
+                            <li><i class="fa fa-envelope-o"></i> <a href="#">akbar.shamsi@gmail.com</a></li>
+                        </ul>
+                    </div>
+                    <div ng-if="!authenticated" class="tb_center pull-right">
+                        <ul>
+
+                            <li><a style="cursor: pointer" ng-click="vm.login()">&nbsp;ورود</a>
+                            </li>
+                            <li><a href="#" ng-click="vm.register()">&nbsp;ثبت نام </a></li>
+                        </ul>
+                    </div>
+                    <div ng-if="authenticated" class="tb_right pull-right">
+                        <ul>
+                            <li>
+                                <div ng-if="authenticated" class="tbr-info">
+                                    <span>  سلام،&nbsp;{{account.firstName}}&nbsp;&nbsp;<i class="fa fa-caret-down"></i></span>
+
+                                    <div class="tbr-inner">
+                                        <a access="admin" href="/admin/dashboard">&nbsp;پانل</a>
+                                        <a href="/account"><i class="fa fa-user fa-4x" aria-hidden="false"></i>حساب
+                                            کاربری</a>
+                                        <a href="#"><i class="fa fa-comments fa-4x" aria-hidden="true"></i>پیام ها</a>
+                                        <a href="#"><i class="fa fa-shopping-cart fa-4x" aria-hidden="true"></i>سفارشات</a>
+                                        <a href="/" ng-click="vm.logout()"><i class="fa fa-sign-out fa-4x"
+                                                                              aria-hidden="true"></i> خروج </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="register.html">
+    <div class="account-form">
+        <form id="shipping-zip-form" name="registerForm">
+            <ul class="form-list row">
+                <li class="col-md-6 col-sm-6" class="form-group" show-errors='{showSuccess: true}'>
+                    <label>نام <em>*</em></label>
+                    <input required type="text" ng-model="vm.userInfo.firstName" class="input-text">
+                </li>
+                <li class="col-md-6 col-sm-6" class="form-group" show-errors='{showSuccess: true}'>
+                    <label>نام خانوادگی <em>*</em></label>
+                    <input required type="text" ng-model="vm.userInfo.lastName" class="input-text">
+                </li>
+                <li class="col-md-6 col-sm-6" class="form-group" show-errors='{showSuccess: true}'>
+                    <label>ایمیل <em>*</em></label>
+                    <input required type="email" ng-model="vm.userInfo.email" class="input-text">
+                </li>
+                <li class="col-md-6 col-sm-6" class="form-group" show-errors='{showSuccess: true}'>
+                    <label>شماره موبایل <em>*</em></label>
+                    <input required type="text" ng-model="vm.userInfo.mobile" class="input-text">
+                </li>
+                <li class="col-md-6 col-sm-6" class="form-group" show-errors='{showSuccess: true}'>
+                    <label>کلمه کاربری<em>*</em></label>
+                    <input type="text" class="input-text" ng-model="vm.userInfo.username"
+                           placeholder="ایمیل یا شماره همراه">
+                </li>
+                <li class="col-md-6 col-sm-6" class="form-group" show-errors='{showSuccess: true}'>
+                    <label>کلمه عبور<em>*</em></label>
+                    <input type="password" ng-model="vm.userInfo.password" class="input-text">
+                </li>
+            </ul>
+            <div class="buttons-set">
+                <button class="btn-black" ng-click="vm.register(vm.userInfo)" type="button">
+                    <span><span>ثبت نام</span></span></button>
+            </div>
+        </form>
+    </div>
+</script>
+<script type="text/ng-template" id="login.html">
+    <div class="account-form" style="z-index: 10001">
+        <form class="form-login">
+            <ul class="form-list row">
+                <li class="col-md-12 col-sm-12">
+                    <span class="has-error" style="color: red" ng-show="displayErrorMsg">اطلاعات کاربری وارد شده صحیح نمی باشد</span>
+                </li>
+                <li class="col-md-12 col-sm-12">
+                    <label>کلمه کاربری<em>*</em></label>
+                    <input dir="ltr" required type="text" class="input-text" ng-model="username"
+                           ng-style="displayErrorMsg && {'border':'1px solid red'}"
+                           placeholder="ایمیل">
+                </li>
+                <li class="col-md-12 col-sm-12">
+                    <label>کلمه عبور <em>*</em></label>
+                    <input required type="password" class="input-text" ng-model="password"
+                           ng-style="displayErrorMsg && {'border':'1px solid red'}">
+                </li>
+                <li class="col-md-12 col-sm-12 pwd text-right">
+                    <button class="btn-color btn btn-secondary btn-lg" type="button" ng-click="login()"> <span><span>ورود</span></span></button>
+                    <div class="space20"></div>
+                    <label> <a href="#">فراموشی کلمه عبور </a> </label>
+                </li>
+            </ul>
+        </form>
+    </div>
+</script>
+

@@ -1,0 +1,135 @@
+<div class="account-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="bcrumbs">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul style="float: right">
+                            <li>نشانی های من</li>
+                            <li><a href="#">صفحه اصلی</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 checkout-steps">
+                <div>
+                    <ul class="account-list">
+                        <li><a href="/account"> <i class="fa fa-edit"></i> اطلاعات حساب کاربری</a></li>
+                        <li><a href="/account/change-password"> <i class="fa fa-edit"></i> تغییر کلمه عبور</a></li>
+                        <li><a href="/account/address-book"> <i class="fa fa-edit"></i> نشانی های من</a></li>
+                        <li><a href="/user/orders"> <i class="fa fa-edit"></i> سفارشات من</a></li>
+                        <li><a href="/user/message"> <i class="fa fa-edit"></i> پیام ها</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-9 col-sm-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><i class="fa fa-address-card fa-lg" aria-hidden="true"></i>&nbsp;
+                             نشانی های من
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-md-12">
+                                    <table class="cart-table table-hover">
+                                        <tr>
+                                            <th><strong>پیش فرض</strong></th>
+                                            <th><strong>نام</strong></th>
+                                            <th><strong>شماره همراه</strong></th>
+                                            <th><strong>شماره تلفن</strong></th>
+                                            <th><strong>کد پستی</strong></th>
+                                            <th><strong>آدرس</strong></th>
+                                            <th><strong>عملیات</strong></th>
+
+                                        </tr>
+                                        <tr ng-repeat="address in vm.addressList" ng-style="address.id == vm.deletedId && {'background-color':'#FF3F43'}">
+                                            <td><input type="radio" ng-model="vm.choosesAddress"
+                                                       ng-checked="address.defaultAddress"
+                                                       ng-click="vm.chooseAddress(address.id)"></td>
+                                            <td>{{address.fullName}}</td>
+                                            <td>{{address.mobile}}</td>
+                                            <td>{{address.phone}}</td>
+                                            <td>{{address.postalCode}}</td>
+                                            <td>{{address.postalAddress}}</td>
+                                            <td><a href="#" class="edit fa fa-edit"
+                                                   ng-click="vm.getAddressInfo(address)"></a>
+                                                <a href="#" ng-click="vm.removeAddress(address.id); vm.deletedId = address.id;"
+                                                   class="edit fa fa-trash"></a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="space30"></div>
+                                    <button class="btn-color btn btn-secondary btn-lg"
+                                            style="font-size: 16px;font-weight: bold"
+                                            type="button" ng-click="vm.address = {};vm.enableNewAddress = !vm.enableNewAddress">نشانی
+                                        جدید
+                                    </button>
+                                    <div class="sep"></div>
+                                </div>
+
+                                <form ng-show="vm.enableNewAddress" name="productForm" novalidate>
+                                    <ul class="form-list row">
+                                        <li class="col-md-6 col-sm-6">
+                                            <label>نام ونام خانوادگی <em>*</em></label>
+                                            <input required type="text" ng-model="vm.address.fullName"
+                                                   class="form-control">
+                                        </li>
+                                        <li class="col-md-6 col-sm-6">
+                                            <label>شماره همراه</label>
+                                            <input type="text" ng-model="vm.address.mobile" class="form-control">
+                                        </li>
+                                        <li class="col-md-6 col-sm-6">
+                                            <label>شماره تلفن</label>
+                                            <input type="text" ng-model="vm.address.phone" class="form-control">
+                                        </li>
+                                        <li class="col-md-6 col-sm-6">
+                                            <div class="form-group">
+                                                <label>استان</label>
+                                                <select ng-model="vm.address.province" class="form-control">
+                                                    <option value="1">استان 1</option>
+                                                    <option value="1">استان 1</option>
+                                                    <option value="1">استان 1</option>
+                                                </select>
+                                            </div>
+                                        </li>
+                                        <li class="col-md-6 col-sm-6">
+                                            <div class="form-group">
+                                                <label>شهر</label>
+                                                <select ng-model="vm.address.city" class="form-control">
+                                                    <option value="1">شهر 1</option>
+                                                    <option value="1">شهر 2</option>
+                                                    <option value="1">شهر 3</option>
+                                                </select>
+                                            </div>
+                                        </li>
+                                        <li class="col-md-6 col-sm-6">
+                                            <label>نشانی پستی <em>*</em></label>
+                                            <input required type="text" ng-model="vm.address.postalAddress"
+                                                   class="form-control">
+                                        </li>
+                                        <li class="col-md-6 col-sm-6">
+                                            <label>کد پستی<em>*</em></label>
+                                            <input required type="text" ng-model="vm.address.postalCode"
+                                                   class="form-control">
+                                        </li>
+                                        <li class="col-md-6 col-sm-6 col-md-push-3">
+                                            <button  class="btn btn-primary btn-lg btn-block"
+                                                    ng-disabled="form.$invalid"
+                                                    ng-click="vm.addAddress()" type="button">
+                                                <span><span>{{vm.address.id != null?'ویرایش' :'ثبت'}}</span></span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix space20"></div>
+
+

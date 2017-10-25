@@ -1,0 +1,155 @@
+<div class="container">
+    <div class="row bs-wizard" style="border-bottom:0;">
+        <div class="col-xs-3 bs-wizard-step complete">
+            <div class="text-center bs-wizard-stepnum">ورود</div>
+
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <a href="#" class="bs-wizard-dot"></a>
+        </div>
+        <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
+            <div class="text-center bs-wizard-stepnum">تکمیل سبد خرید</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <a href="#" class="bs-wizard-dot"></a>
+        </div>
+        <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
+            <div class="text-center bs-wizard-stepnum">تایید نشانی و نحوه پرداخت</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <a href="#" class="bs-wizard-dot"></a>
+        </div>
+        <div class="col-xs-3 bs-wizard-step active"><!-- active -->
+            <div class="text-center bs-wizard-stepnum">ثبت سفارش</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <a href="#" class="bs-wizard-dot"></a>
+        </div>
+    </div>
+</div>
+<div class="space10"></div>
+<div class="shop-single shopping-cart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="cart-table">
+                    <tr>
+                        <th><strong>تصویر کالا</strong></th>
+                        <th><strong>نام کالا</strong></th>
+                        <th><strong>تعداد</strong></th>
+                        <th><strong> قیمت واحد</strong></th>
+                        <th><strong>فیمت کل</strong></th>
+                    </tr>
+                    <tr ng-repeat="cart in vm.shoppingCart">
+                        <td><img class="thumbnail"
+                                 ng-src="/api/display/{{cart.defaultImage.code}}/SMALL/{{cart.defaultImage.imageName}}"
+                                 width="80" height="120"
+                                 alt=""/></td>
+                        <td style="direction: rtl">
+                            <h4><a href="./single-product.html">{{cart.productName}}</a></h4>
+
+                            <p ng-repeat="attr in cart.attributeNameValues" style="direction: rtl;">{{attr.optionName}}
+                                :<strong>{{attr.optionValue}}</strong></p>
+
+                        </td>
+                        <td>
+                            <input disabled type="text" value="{{cart.quantity}}">
+                        </td>
+                        <td>
+                            <div class="item-price">{{cart.price | number}}</div>
+                        </td>
+                        <td>
+                            <div class="item-price">{{cart.price * cart.quantity | number}} تومان</div>
+                        </td>
+                    </tr>
+
+                </table>
+                <div class="clearfix space20"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="space10"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="side-widget space50">
+                <h3><span><strong> صورت حساب </strong></span></h3>
+
+                <div>
+                    <table class="cart-table">
+                        <tfoot>
+                        <tr>
+                            <th><strong>جمع خرید</strong></th>
+                            <td>
+                                <div class="">{{vm.totalPurchase() | number}} تومان</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><strong>هزینه ارسال</strong></th>
+                            <td>
+                                <div class="">خرید های بالای <strong style="color: #009688">100,000</strong> تومان
+                                    رایگان می باشد. <br>
+                                    خریدهای کمتر از مقدار مذکور مشمول 5,000 تومان هزینه ارسال می شود.
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><strong>مبلغ قابل پرداخت</strong></th>
+                            <td>
+                                <div class="">{{vm.totalPurchase() > 10000 ? vm.totalPurchase() + 5000:
+                                    vm.totalPurchase() | number}} تومان
+                                </div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="side-widget space50">
+                <h3><span> نشانی محل ارسال سفارش</span></h3>
+
+                <div>
+                    <table class="cart-table">
+                        <tr>
+                            <th><strong>نام تحویل گیرنده</strong></th>
+                            <th><strong>نشانی</strong></th>
+                            <th><strong>شماره تلفن</strong></th>
+                        </tr>
+                        <tbody>
+                        <tr>
+                            <td>{{vm.defaultAddress.fullName}}</td>
+                            <td>{{vm.defaultAddress.postalAddress}}</td>
+                            <td>{{vm.defaultAddress.mobile}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="table-btn">
+        <div class="row">
+            <div class="col-md-4">
+                <a href="#" class="btn-black pull-left">بازگشت به صفحه محصولات</a>
+            </div>
+            <div class="col-md-8">
+                <a href="/shopping-cart/payment" class="btn-black pull-right">ادامه خرید</a>&nbsp;&nbsp;
+                <a href="/shopping-cart/chooseAddress" class="btn-black pull-right">مرحله قبل</a>&nbsp;&nbsp;
+            </div>
+        </div>
+    </div>
+</div>
+<div class="space20"></div>

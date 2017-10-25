@@ -1,0 +1,124 @@
+<div class="container">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12 col-lg-offset-1">
+            <h1 class="page-header">
+                گروه ها </h1>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-desktop"></i> مدیریت گروه ها
+                </li>
+            </ol>
+        </div>
+        <div class="col-lg-12 col-lg-offset-1">
+            <div class="col-lg-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><i class="fa fa-pencil">&nbsp;&nbsp;</i>گروه ها</div>
+                    <div class="panel-body">
+                        <ol class="plholder" id="ol_1" data-id="1">
+                            <!--Home-->
+                        </ol>
+                        <treecontrol class="tree-light" tree-model="categories" options="treeOptions"
+                                     on-selection="showSelected(node)">
+                            label: {{node.name}}
+                        </treecontrol>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><i class="fa fa-pencil">&nbsp;&nbsp;</i>عملیات</div>
+                    <div class="panel-body">
+                        <ol class="plholder" id="ol_1" data-id="1">
+                            <!--Home-->
+                        </ol>
+                        <form name="categoryForm" novalidate>
+                            <div class="col-lg-12">
+                                <div class="col-lg-8">
+                                    <div class="form-group" show-errors='{showSuccess: true}'>
+                                        <label class="control-label">نام گروه</label>
+                                        <input type="text" class="form-control" name="name" ng-model="vm.category.name"
+                                               required
+                                               placeholder="نام گروه"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="form-group" show-errors='{showSuccess: true}'>
+                                        <label class="control-label">کلید گروه</label>
+                                        <input type="text" class="form-control" name="name" ng-model="vm.category.value"
+                                               required
+                                               placeholder="کلید گروه"/>
+
+                                        <!--<p class="help-block" ng-show="categoryForm.name.$error.required">نام گروه-->
+                                        <!--الزامی-->
+                                        <!--است</p>-->
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="form-group">
+                                        <label class="control-label">والد گروه</label>
+                                        <tree-dropdown class="tree-dropdown" data="vm.categoryCombo"
+                                                       selected="vm.parent"></tree-dropdown>
+
+                                        <p class="help-block"
+                                           ng-class="{'has-error':categoryForm.parent.$error.invalidParent}"
+                                           ng-show="categoryForm.parent.$error.invalidParent">والد انتخاب شده اشتباه می
+                                            باشد</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="form-group" show-errors='{showSuccess: true}'>
+                                        <label class="control-label">وضعیت نمایش</label>
+                                        <select class="form-control" ng-model="vm.category.enable"
+                                                ng-options="status.value as status.name for (key,status) in vm.categoryStatus">
+                                            <option style="display: none;" value="">اانتخاب کنید</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="form-group" show-errors='{showSuccess: true}'>
+                                        <label class="control-label">توضیحات</label>
+                                        <input type="text" class="form-control" name="description"
+                                               ng-model="vm.category.description"
+                                               required
+                                               placeholder="توضیحات"/>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                            <img ng-src="" width="200"
+                                                 height="150" alt="Image">
+                                        </div>
+                                        <label class="btn btn-primary" for="my-file-selector">
+                                            <input id="my-file-selector" name="file" type="file" file-upload
+                                                   style="display:none;">
+                                            Select Image ...
+                                        </label>
+                                        <!--<progress value="{{progress}}"></progress>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-lg-offset-2">
+                                <button ng-show="!vm.category.id" class="btn btn-primary"
+                                        ng-click="save()">
+                                    اضافه
+                                </button>
+                                <button ng-show="vm.category.id" class="btn btn-primary" ng-click="save()">
+                                    ویرایش
+                                </button>
+                                <button class="btn btn-error" ng-click="vm.cancel()">انصراف</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>

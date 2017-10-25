@@ -1,0 +1,157 @@
+<div class="container">
+    <div class="row bs-wizard" style="border-bottom:0;">
+        <div class="col-xs-3 bs-wizard-step complete">
+            <div class="text-center bs-wizard-stepnum">ورود</div>
+
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <a href="#" class="bs-wizard-dot"></a>
+        </div>
+        <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
+            <div class="text-center bs-wizard-stepnum">تکمیل سبد خرید</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <a href="#" class="bs-wizard-dot"></a>
+        </div>
+        <div class="col-xs-3 bs-wizard-step active"><!-- complete -->
+            <div class="text-center bs-wizard-stepnum">تایید نشانی و نحوه پرداخت</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <a href="#" class="bs-wizard-dot"></a>
+        </div>
+        <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
+            <div class="text-center bs-wizard-stepnum">ثبت سفارش</div>
+            <div class="progress">
+                <div class="progress-bar"></div>
+            </div>
+            <a href="#" class="bs-wizard-dot"></a>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <button ng-click="vm.open()" class="btn-color btn btn-secondary btn-lg"
+                    style="font-size: 16px;font-weight: bold" type="button">
+                نشانی جدید
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<div class="space10"></div>
+<div class="shop-single shopping-cart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="cart-table">
+                    <tr>
+                        <th><strong>انتخاب</strong></th>
+                        <th><strong>نام</strong></th>
+                        <th><strong>شماره همراه</strong></th>
+                        <th><strong>شماره تلفن</strong></th>
+                        <th><strong>کد پستی</strong></th>
+                        <th><strong>آدرس</strong></th>
+
+                    </tr>
+                    <tr ng-repeat="address in vm.addressList">
+                        <td><input type="radio" ng-model="vm.choosesAddress" ng-checked="address.defaultAddress"
+                                   ng-click="vm.chooseAddress(address.id)"></td>
+                        <td>{{address.fullName}}</td>
+                        <td>{{address.mobile}}</td>
+                        <td>{{address.phone}}</td>
+                        <td>{{address.postalCode}}</td>
+                        <td>{{address.postalAddress}}</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="table-btn">
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="#" class="btn-black pull-left">بازگشت به صفحه محصولات</a>
+                </div>
+                <div class="col-md-8">
+                    <a href="/shopping-cart/payment" class="btn-black pull-right">ادامه خرید</a>&nbsp;&nbsp;
+                    <a href="/shopping-cart/chooseAddress" class="btn-black pull-right">مرحله قبل</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="space20"></div>
+</div>
+
+<script type='text/ng-template' id="new-address.html">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><i class="fa fa-address-card fa-lg" aria-hidden="true"></i>&nbsp;
+                    افزودن نشانی جدید
+                </div>
+                <div class="panel-body">
+                    <form name="productForm" novalidate>
+                        <ul class="form-list row">
+                            <li class="col-md-6 col-sm-6">
+                                <label>نام ونام خانوادگی <em>*</em></label>
+                                <input required type="text" ng-model="address.fullName"
+                                       class="form-control">
+                            </li>
+                            <li class="col-md-6 col-sm-6">
+                                <label>شماره همراه</label>
+                                <input type="text" ng-model="address.mobile" class="form-control">
+                            </li>
+                            <li class="col-md-6 col-sm-6">
+                                <label>شماره تلفن</label>
+                                <input type="text" ng-model="address.phone" class="form-control">
+                            </li>
+                            <li class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>استان</label>
+                                    <select ng-model="address.province" class="form-control">
+                                        <option value="1">استان 1</option>
+                                        <option value="1">استان 1</option>
+                                        <option value="1">استان 1</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>شهر</label>
+                                    <select ng-model="address.city" class="form-control">
+                                        <option value="1">شهر 1</option>
+                                        <option value="1">شهر 2</option>
+                                        <option value="1">شهر 3</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="col-md-6 col-sm-6">
+                                <label>نشانی پستی <em>*</em></label>
+                                <input required type="text" ng-model="address.postalAddress"
+                                       class="form-control">
+                            </li>
+                            <li class="col-md-6 col-sm-6">
+                                <label>کد پستی<em>*</em></label>
+                                <input required type="text" ng-model="address.postalCode"
+                                       class="form-control">
+                            </li>
+                            <li class="col-md-6 col-sm-6 col-md-push-3">
+                                <button class="btn btn-primary btn-lg btn-block" ng-disabled="form.$invalid"
+                                        ng-click="addAddress()" type="button">
+                                    <span><span>ثبت نشانی جدید</span></span></button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

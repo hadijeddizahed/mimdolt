@@ -1,0 +1,18 @@
+<div class="account-form">
+    <span>ایجاد حساب کاربری</span>
+    <hr>
+    <form  name="form">
+        <ul class="form-list row">
+            <li class="col-md-12 col-sm-12" class="form-group" show-errors='{showSuccess: true}'>
+                <label>شماره همراه <em>*</em></label>
+                <input required type="text" ng-model="vm.username" ng-pattern="/^[0-9]{10,10}$/" required class="input-text" style="direction: ltr"
+                       placeholder="شماره همراه">
+            </li>
+        </ul>
+        <div class="col-md-12 text-center">
+            <button class="btn btn-primary btn-lg btn-block" ng-disabled="form.$invalid"  ng-click="vm.sendConfirmCode(vm.username)" type="button">
+                <span><span>دریافت کد تایید</span></span></button>
+        </div>
+    </form>
+</div>
+

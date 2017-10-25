@@ -1,0 +1,41 @@
+<!-- PRODUCTS -->
+<div class="clearfix space50"></div>
+<div class="featured-products">
+    <div class="container">
+        <div class="row">
+            <div class="heading-sub text-center">
+                <h5><span>محصولات</span></h5>
+            </div>
+            <div id="isotope" class="isotope">
+                <div class="isotope-item clothing col-lg-4 col-md-12  " ng-repeat="product in vm.products">
+                    <div class="product-item">
+                        <div class="item-thumb">
+                            <span class="badge new">New</span>
+                            <img ng-src="/api/display/{{product.defaultImage.code}}/MEDIUM/{{product.defaultImage.imageName}}"
+                                 class="img-responsive"
+                                 alt=""/>
+
+                            <div class="overlay-rmore fa fa-search quickview" data-toggle="modal"
+                                 data-target="#myModal" ng-click="vm.open(product.id)"></div>
+                            <div class="product-overlay">
+                                <a href="#" class="addcart fa fa-shopping-cart"></a>
+                                <a href="#" class="compare fa fa-signal"></a>
+                                <a href="#" class="likeitem fa fa-heart-o"></a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-title"><a href="./single-product.html" ng-bind="product.title"></a></h4>
+                            <span class="product-price">$99.00 <em>- Pre order</em></span>
+
+                            <div class="item-colors">
+                                <a href="#" class="black"></a>
+                                <a href="#" class="brown"></a>
+                                <a href="#" class="red"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

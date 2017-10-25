@@ -1,0 +1,55 @@
+<div class="container">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12 col-lg-offset-1">
+            <h1 class="page-header">
+                تولید کننده ها
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i> <a href="admin/dashboard">صفحه اصلی</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-desktop"></i> تولید کننده ها
+                </li>
+            </ol>
+        </div>
+        <div class="col-lg-12 col-lg-offset-1" id="notifyTarget">
+            <div class="panel panel-default">
+                <div class="panel-heading"><i class="fa fa-">&nbsp;&nbsp;</i>عملیات</div>
+                <div class="panel-body">
+                    <form name="categoryForm" novalidate>
+                        <div class="col-lg-10">
+                            <div class="col-lg-8 col-lg-offset-2 ">
+                                <div class="form-group" show-errors='{showSuccess: true}'>
+                                    <label class="control-label">نام تولید کننده</label>
+                                    <input type="text" class="form-control" name="name" ng-model="vm.manufacturer.name"
+                                           required
+                                           placeholder="نام تولید کننده"/>
+
+                                    <p class="help-block" ng-show="categoryForm.name.$error.required"> نام تولید کننده الزامی می باشد</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-lg-offset-2">
+                                <div class="form-group" show-errors='{showSuccess: true}'>
+                                    <label class="control-label">الویت در نمایش</label>
+                                    <input type="text" class="form-control" name="sortOrder"
+                                           ng-model="vm.manufacturer.sortOrder"
+                                           placeholder=""/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="pull-left ">
+                                <button type="button" ng-click="vm.add()" title="" class="btn btn-primary" data-original-title="Save"><i
+                                        class="fa fa-save"></i></button>
+                                <a href="/admin/manufacturer" data-toggle="tooltip" title="" class="btn btn-default"
+                                   data-original-title="Cancel"><i class="fa fa-reply"></i></a></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

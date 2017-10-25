@@ -1,0 +1,58 @@
+<state-loader force-show="showLoader"><img src="/resources/images/loading.gif"></state-loader>
+<div class="block-main container no-padding-top">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="block-content space30">
+                <img src="/resources/images/blocks/small-slider.png" class="img-responsive" alt=""/>
+                <div class="text-style1">
+
+                </div>
+            </div>
+            <div class="block-content">
+                <img src="/resources/images/blocks/small-slider-2.png" class="img-responsive" alt=""/>
+                <div class="text-style2" style="background-color: #a6e1ec">
+                    <h6>تنوع محصولات</h6>
+                    <a href="#">خرید</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="home-carousel">
+                <script type="text/ng-template" id="tpl.html">
+                    <div>
+                        <img src="/resources/images/blocks/big-slider{{i+1}}.jpg" class="img-responsive" alt=""/>
+                        <div class="c-text">
+
+                        </div>
+                    </div>
+                </script>
+
+                <slick  settings="slickConfig"  dots="true">
+                    <div ng-repeat="i in number1 track by $index">
+                        <div class="" ng-include="'tpl.html'"></div>
+                    </div>
+                </slick>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="block-content space30">
+                <img src="/resources/images/blocks/small-slider-3.png" class="img-responsive" alt=""/>
+                <div class="text-style2" style="background-color: #a6e1ec">
+                    <h6>با کیفیت و اصل</h6>
+                    <a href="#">خرید</a>
+                </div>
+            </div>
+            <div class="block-content">
+                <img src="/resources/images/blocks/small-slider-4.png" class="img-responsive" alt=""/>
+                <div class="text-style3" >
+                    <!--<h6>محصولات به روز</h6>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .slick-prev:before, .slick-next:before {
+        color:red !important;
+    }
+</style>

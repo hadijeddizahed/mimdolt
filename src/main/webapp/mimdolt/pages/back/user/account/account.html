@@ -1,0 +1,125 @@
+<div class="account-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="bcrumbs">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul style="float: right">
+                            <li>حساب کاربری</li>
+                            <li><a href="#">صفحه اصلی</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 checkout-steps">
+                <div>
+                    <ul class="account-list">
+                        <li><a href="/account"> <i class="fa fa-edit"></i> اطلاعات حساب کاربری</a></li>
+                        <li><a href="/account/change-password"> <i class="fa fa-edit"></i> تغییر کلمه عبور</a></li>
+                        <li><a href="/account/address-book"> <i class="fa fa-edit"></i> نشانی های من</a></li>
+                        <li><a href="/user/orders"> <i class="fa fa-edit"></i> سفارشات من</a></li>
+                        <li><a href="/user/message"> <i class="fa fa-edit"></i> پیام ها</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-9 col-sm-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><i class="fa fa-address-card fa-lg" aria-hidden="true"></i>&nbsp;
+                                پروفایل
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6" ng-show="!vm.enableEdit">
+                                            <ul class="form-list">
+                                                <li class="col-md-12 col-sm-12">
+                                                    <label>نام</label><br/>
+                                                    &nbsp;&nbsp;<span ng-bind="vm.userInfo.firstName"></span><br/><br/>
+                                                </li>
+                                                <li class="col-md-12 col-sm-12">
+                                                    <label>نام خانوادگی</label><br/>
+                                                    &nbsp;&nbsp;<span ng-bind="vm.userInfo.lastName"></span><br/><br/>
+                                                </li>
+                                                <li class="col-md-12 col-sm-12">
+                                                    <label>ایمیل</label><br/>
+                                                    &nbsp;&nbsp;<span ng-bind="vm.userInfo.email"></span><br/><br/>
+                                                </li>
+                                                <li class="col-md-12 col-sm-12">
+                                                    <label>شماره همراه</label><br/>
+                                                    &nbsp;&nbsp;<span ng-bind="vm.userInfo.mobile"></span><br/><br/>
+                                                </li>
+                                                <li class="col-md-12 col-sm-12">
+                                                   <a href="#" ng-click="vm.enableEdit = !vm.enableEdit" >ویرایش</a>
+                                                </li>
+                                            </ul>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12" ng-show="vm.enableEdit">
+                                        <form name="accountForm">
+                                            <ul class="form-list">
+                                                <li class="col-md-12 col-sm-12">
+                                                    <label>نام</label>
+                                                    <input required type="text" name="firstName"
+                                                           ng-model="vm.userInfo.firstName"
+                                                           class="input-text">
+                                                </li>
+                                                <li class="col-md-12 col-sm-12">
+                                                    <label>نام خانوادگی</label>
+                                                    <input required type="text" name="lastName"
+                                                           ng-model="vm.userInfo.lastName"
+                                                           class="input-text">
+                                                </li>
+                                                <li class="col-md-12 col-sm-12">
+                                                    <label>ایمیل</label>
+                                                    <input required type="text" name="email"
+                                                           ng-model="vm.userInfo.email"
+                                                           class="input-text">
+                                                </li>
+                                                <li class="col-md-12 col-sm-12">
+                                                    <label>شماره همراه</label>
+                                                    <input required type="text" name="mobile"
+                                                           ng-model="vm.userInfo.mobile"
+                                                           class="input-text">
+                                                </li>
+                                                <li class="col-md-6 col-sm-6">
+                                                    <button class="btn-color btn btn-secondary btn-lg"
+                                                            style="font-size: 16px;font-weight: bold"
+                                                            type="button" ng-click="vm.updateProfile()">ویرایش
+                                                    </button>
+                                                </li>
+                                                <li class="col-md-6 col-sm-6">
+                                                    <button class="btn btn-white btn-lg"
+                                                            style="font-size: 16px;font-weight: bold"
+                                                            type="button" ng-click="vm.enableEdit=false">انصراف
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><i class="fa fa-address-book fa-lg" aria-hidden="true">&nbsp;آدرس
+                                های من</i></div>
+                            <div class="panel-body">Panel Content</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>&nbsp;سفارشات
+                                من
+                            </div>
+                            <div class="panel-body">Panel Content</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix space20"></div>
+

@@ -1,0 +1,67 @@
+<!-- MY ACCOUNT -->
+<div class="account-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-8">
+                <!-- HTML -->
+                <div id="account-id">
+                    <h4 class="account-title"><span class="fa fa-chevron-left"></span>ثبت نام</h4>
+                    <div class="account-form">
+                        <form id="shipping-zip-form"  name="registerForm">
+                            <ul class="form-list row">
+                                <li class="col-md-12 col-sm-12" class="form-group">
+                                    <h4 class="account-title"><span class="fa fa-chevron-left"></span>کلمه کاربری</h4>
+                                </li>
+                                <li class="col-md-6 col-sm-6" class="form-group" show-errors='{showSuccess: true}'>
+                                    <label >نام <em>*</em></label>
+                                    <input required type="text" ng-model="vm.userInfo.firstName" class="input-text">
+                                </li>
+                                <li class="col-md-6 col-sm-6" class="form-group" show-errors='{showSuccess: true}'>
+                                    <label >نام خانوادگی <em>*</em></label>
+                                    <input required type="text"  ng-model="vm.userInfo.lastName" class="input-text">
+                                </li>
+                                <li class="col-md-6 col-sm-6" class="form-group" show-errors='{showSuccess: true}'>
+                                    <label >ایمیل <em>*</em></label>
+                                    <input required type="email"  ng-model="vm.userInfo.email" class="input-text">
+                                </li>
+                                <li class="col-md-6 col-sm-6" class="form-group" show-errors='{showSuccess: true}'>
+                                    <label >شماره موبایل <em>*</em></label>
+                                    <input required type="text"  ng-model="vm.userInfo.mobile" class="input-text">
+                                </li>
+                                <li class="col-md-6 col-sm-6" class="form-group" show-errors='{showSuccess: true}'>
+                                    <label>کلمه عبور<em>*</em></label>
+                                    <input type="password"  ng-model="vm.userInfo.password" class="input-text">
+                                </li>
+                                <li class="col-md-6 col-sm-6" class="form-group" show-errors='{showSuccess: true}'>
+                                    <label>تکرار کلمه کاربری<em>*</em></label>
+                                    <input type="password"  ng-model="vm.userInfo.password" class="input-text">
+                                </li>
+                            </ul>
+                            <div class="buttons-set">
+                                <button class="btn-black" ng-click="vm.register(vm.userInfo)" type="button"><span><span>ثبت نام</span></span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-4 checkout-steps">
+                <h6>Account</h6>
+                <div>
+                    <ul class="account-list">
+                        <li class="active"><a href="account-information.html"> <i class="fa fa-edit"></i> Account Information </a></li>
+                        <li><a href="my-account.html"> <i class="fa fa-edit"></i> My Account</a></li>
+                        <li><a href="cng-pw.html"> <i class="fa fa-edit"></i> Change Password</a></li>
+                        <li><a href="address-book.html"> <i class="fa fa-edit"></i> Address Books</a></li>
+                        <li><a href="order-history.html"> <i class="fa fa-edit"></i> Order History</a></li>
+                        <li><a href="review-rating.html"> <i class="fa fa-edit"></i> Reviews and Ratings</a></li>
+                        <li><a href="return.html"> <i class="fa fa-edit"></i> Returns Requests</a></li>
+                        <li><a href="newsletter.html"> <i class="fa fa-edit"></i> Newsletter</a></li>
+                        <li><a href="myaccount-leftsidebar.html"> <i class="fa fa-edit"></i> Left Sidebar</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix space20"></div>

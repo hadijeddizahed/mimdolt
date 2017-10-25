@@ -1,0 +1,99 @@
+<div class="container">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12 col-lg-offset-1">
+            <h1 class="page-header">
+                محصولات</h1>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i> <a href="/admin/dashboard">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-desktop"></i> محصولات
+                </li>
+            </ol>
+            <div class="container-fluid">
+                <div class="pull-right">
+                    <a href="/admin/product/edit/" class="btn btn-primary" data-toggle="tooltip"
+                       data-placement="top"
+                       title="محصول جدید"><i
+                            class="fa fa-plus"></i></a>
+                    <button type="button" data-toggle="tooltip"
+                            data-placement="top"
+                            title="حذف محصول" class="btn btn-danger"
+                            ><i class="fa fa-trash-o"></i></button>
+                </div>
+            </div>
+            <hr/>
+        </div>
+        <div class="col-lg-12 col-lg-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading"><i class="fa fa-pencil">&nbsp;&nbsp;</i>عملیات</div>
+                <div class="panel-body">
+
+                    <div class="col-sm-12 actionBar">
+                        <div class="search form-group"></div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-responsive" id="nested-table">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th class="text-center">تصویر</th>
+                                    <th class="text-center">نام</th>
+                                    <th class="text-center">وضعیت</th>
+                                    <th class="text-center">عملیات</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tbody>
+                                <tr ng-repeat="product in vm.products ">
+                                    <td class="text-center"><span><input class="checkbox" type="checkbox"
+                                                                         ng-model="select">
+                                    </span></td>
+                                    <td width="125"><img class="thumbnail" style="width: 100px;height: 100px;"
+                                                         ng-src="/api/display/{{product.defaultImage.code}}/SMALL/{{product.defaultImage.imageName}}"></td>
+                                    <td class="text-center"><span>{{product.title}}</span>
+                                    </td>
+                                    <td class="text-center"><i
+                                            ng-class="product.enable ? 'fa fa-check-square-o' : 'fa fa-times'"></i>
+                                    </td>
+                                    <td class="text-center">&nbsp;&nbsp;
+                                        <a class="btn btn-primary" data-toggle="tooltip"
+                                           data-placement="top"
+                                           title="ویرایش"
+                                           href="/admin/product/edit/{{product.id}}">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>&nbsp;&nbsp;
+                                        <a class="btn btn-primary"
+                                           href="/admin/product/uploadImage?productId={{product.id}}"
+                                           data-toggle="tooltip"
+                                           data-placement="top" title="ویرایش تصاویر">
+                                            <i class="fa fa-picture-o"
+                                               aria-hidden="true"></i>
+                                        </a>&nbsp;&nbsp;
+                                        <button ng-class="product.enable ? 'btn btn-success' : 'btn btn-danger'"
+                                                data-toggle="tooltip"
+                                                data-placement="top" title="فعال/غیرفعال" ng-click="vm.changeStatus(product.id)">
+                                            <i class="fa fa-power-off"
+                                               aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 text-right col-lg-offset-1 ">
+                        <ul class="pagination">
+                            <li ng-repeat="p in vm.pages track by $index" ng-class="{'active': $index== vm.selected}"><a
+                                    href="#"
+                                    ng-click="vm.getPage($index)">{{$index+1}}</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

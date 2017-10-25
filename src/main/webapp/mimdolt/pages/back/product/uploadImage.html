@@ -1,0 +1,93 @@
+<!--suppress ALL -->
+<div class="container">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12 col-lg-offset-1">
+            <h1 class="page-header">
+                افزودن تصاویر</h1>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i> <a href="index.html">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-desktop"></i> افزودن تصاویر
+                </li>
+            </ol>
+        </div>
+        <div class="col-lg-12 col-lg-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading"><i class="fa fa-">&nbsp;&nbsp;</i>عملیات</div>
+                <div class="panel-body">
+                    <form name="productForm" novalidate>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-responsive" id="nested-table">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th class="text-center">تصویر</th>
+                                    <th class="text-center">عملیات</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="image in productImages">
+                                    <td class="text-center"><span><input class="checkbox" type="checkbox"
+                                                                         ng-model="select">
+                                    </span></td>
+                                    <td width="125"><img class="thumbnail" style="width: 100px;height: 100px;"
+                                                         ng-src="/api/display/{{image.code}}/SMALL/{{image.imageName}}">
+                                    </td>
+                                    <td class="text-center">&nbsp;&nbsp;
+                                        <a ng-click="delete(image)" class="btn btn-danger"
+                                           ng-show="!image.defaultImage"><i
+                                                class="fa fa-trash"></i></a>
+                                        &nbsp;&nbsp;
+                                        <button ng-class="image.defaultImage ? 'btn btn-success' : 'btn btn-danger'" ng-disabled="image.defaultImage"
+                                                data-toggle="tooltip"
+                                                data-placement="top" title="انتخاب به عنوان تصویر پیش فرض"
+                                                ng-click="setDefaultImage(image)">
+                                            <i class="fa fa-power-off"
+                                               aria-hidden="true"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-lg-10 col-lg-offset-1">
+                            <div class="col-lg-3" ng-repeat="c in imageCount track by $index">
+                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                        <img ng-src="" width="200"
+                                             height="150" alt="Image">
+                                    </div>
+                                    <label class="btn btn-primary" for="my-file-selector{{$index}}">
+                                        <input id="my-file-selector{{$index}}" type="file" file-upload
+                                               style="display:none;">
+                                        Select Image ...
+                                    </label>
+                                    <!--<progress value="{{progress}}"></progress>-->
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="col-lg-8 divider col-lg-offset-2">
+                        <div class="col-lg-6 col-lg-offset-2">
+                            <button ng-show="!vm.product.id" class="btn btn-primary" ng-click="save(vm.product)">
+                                اضافه
+                            </button>
+                            <button ng-show="vm.product.id" class="btn btn-primary" ng-click="vm.add(vm.product)">
+                                ویرایش
+                            </button>
+                            <a class="btn btn-default" href="/admin/product"><i class="fa fa-undo"
+                                                                                aria-hidden="true"></i> بازگشت</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>

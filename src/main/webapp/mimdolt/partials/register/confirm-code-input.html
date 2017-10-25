@@ -1,0 +1,28 @@
+<div class="account-form">
+
+    <form id="shipping-zip-form" name="form">
+        <ul class="form-list row">
+            <li class="col-md-12 col-sm-12" class="form-group" show-errors='{showSuccess: true}'>
+                <label>نام <em>*</em></label>
+                <input required type="text" ng-model="vm.registration.firstName" class="input-text">
+            </li>
+            <li class="col-md-12 col-sm-12" class="form-group" show-errors='{showSuccess: true}'>
+                <label>ایمیل <em>*</em></label>
+                <input required type="email" ng-model="vm.registration.email" class="input-text">
+            </li>
+            <li class="col-md-12 col-sm-12" class="form-group" show-errors='{showSuccess: true}'>
+                <label>کلمه عبور<em>*</em></label>
+                <input type="password" ng-model="vm.registration.password" required class="input-text">
+            </li>
+            <li class="col-md-12 col-sm-12" class="form-group" >
+                <div vc-recaptcha class="g-recaptcha" key="'6Lc6riUUAAAAAHZPBY6ya2biYh-y1ciYwPNeVdn5'"></div>
+            </li>
+        </ul>
+        <div class="space20"></div>
+        <div class="col-md-12 text-center">
+            <button class="btn btn-primary btn-lg btn-block" ng-disabled="form.$invalid" ng-click="vm.createAccount()" type="button">
+                <span><span>ثبت نام</span></span></button>
+        </div>
+    </form>
+</div>
+

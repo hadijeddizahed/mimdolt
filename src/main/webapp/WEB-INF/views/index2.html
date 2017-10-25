@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <base href="/admin"/>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/png" href="resources/img/favicon.jpeg"/>
+    <!-- inject:css -->
+    <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--<link rel="stylesheet" href="resources/vendor/css/lib.min.css">-->
+    <link rel="stylesheet" href="/resources/css/main.css">
+    <link href="/resources/css/bootstrap-rtl.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/resources/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/resources/js/vendors/slick/slick.css">
+    <!--<link rel="stylesheet" href="/resources/js/vendors/rs-plugin/css/settings.css">-->
+    <link rel="stylesheet" href="/resources/js/vendors/select/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="/resources/css/subscribe-better.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/ui-lightness/jquery-ui.css">
+    <!--<link rel="stylesheet" href="/resources/plugin/owl-carousel/owl.carousel.css">-->
+    <!--<link rel="stylesheet" href="/resources/plugin/owl-carousel/owl.theme.css">-->
+    <link rel="stylesheet" href="/resources/css/style.css">
+
+    <link href="/resources/css/ng-tags-input.bootstrap.min.css" rel="stylesheet">
+    <link href="/resources/css/ng-tags-input.min.css" rel="stylesheet">
+    <link href="/resources/css/loading-bar.min.css" rel="stylesheet">
+    <link href="/resources/css/angular-ui-notification.min.css" rel="stylesheet">
+    <link href="/resources/css/ng-notify.min.css" rel="stylesheet">
+
+
+    <!-- endinject -->
+    <title></title>
+</head>
+<body ui-router-styles>
+
+<!--<div ng-if="authenticated" ng-include="'partials/navbar.html'"></div>-->
+<!--<div  ng-include="'partials/navbar.html'"></div>-->
+
+<div ui-view="topbar"></div>
+<!-- HEADER -->
+<div ui-view="navbar" sticky sticky-class="is-sticky">
+
+</div>
+<div ui-view="container">
+</div>
+<footer id="mainFooter" ui-view="footer">
+</footer>
+
+<!-- inject:js -->
+
+<script src="/resources/js/jquery.js"></script>
+<script src="/resources/js/bootstrap.min.js"></script>
+<script src="/resources/vendor/js/lib.min.js"></script>
+
+<!-- ADDTHIS -->
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-557a95e76b3e51d9"
+        async="async"></script>
+<script type="text/javascript">
+    // Call this function once the rest of the document is loaded
+    function loadAddThis() {
+        addthis.init()
+    }
+</script>
+
+
+<script src="/resources/plugin/owl-carousel/owl.carousel.min.js"></script>
+<script src="/resources/js/bs-navbar.js"></script>
+<script src="/resources/js/vendors/isotope/isotope.pkgd.js"></script>
+<script src="/resources/js/vendors/slick/slick.min.js"></script>
+<script src="/resources/js/vendors/tweets/tweecool.min.js"></script>
+<script src="/resources/js/vendors/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="/resources/js/vendors/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+<script src="/resources/js/jquery.sticky.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="/resources/js/vendors/select/jquery.selectBoxIt.min.js"></script>
+
+<script src="/resources/plugin/prettyphoto/js/jquery.prettyPhoto.js"></script>
+
+<script src="/resources/js/main.js"></script>
+
+
+<!--<script src="/resources/js/angular-touch.js"></script>-->
+<!--<script src="/resources/js/angular-animate.js"></script>-->
+<script src="/resources/js/betsol-ng-ui-router-styles.min.js"></script>
+<script src="/resources/js/angular-ui-router.min.js"></script>
+<script src="/resources/js/angular-resource.min.js"></script>
+<script src="/resources/js/angular-route.min.js"></script>
+<script src="/resources/js/swagger-angular-client.min.js"></script>
+
+<script src="/resources/js/showErrors.min.js"></script>
+<script src="/resources/js/ng-tags-input.min.js"></script>
+<script src="/resources/js/loading-bar.min.js"></script>
+<script src="/resources/js/angular-ui-notification.min.js"></script>
+<script src="/resources/js/ng-notify.min.js"></script>
+
+<script src="/resources/js/ui-router-styles.js"></script>
+
+<script src="/resources/js/angular-trix.js"></script>
+<script src="/resources/js/trix.js"></script>
+<script src="/resources/js/script$.min.js"></script>
+
+<script src="/resources/js/sticky.min.js"></script>
+
+<script src="/mimdolt/pages/back/app.js"></script>
+<!--<script src="/mimdolt/pages/back/general/directive/uploadDirective.js"></script>-->
+<!--<script src="/mimdolt/pages/back/general/service/upload.js"></script>-->
+<script src="/resources/js/controllers.js"></script>
+
+
+<script src="/mimdolt/pages/back/navbar/navbarController.js"></script>
+
+<script src="/mimdolt/pages/back/category/categoryController.js"></script>
+<script src="/mimdolt/pages/back/category/categoryService.js"></script>
+<script src="/mimdolt/pages/back/category/categoryFilter.js"></script>
+
+<!-- PRODUCT -->
+<script src="/mimdolt/pages/back/product/productController.js"></script>
+<script src="/mimdolt/pages/back/product/productService.js"></script>
+<!--<script src="/mimdolt/pages/back/product/categoryFilter.js"></script>-->
+
+<script src="/mimdolt/pages/back/filemanager/fileManagerService.js"></script>
+
+
+<script src="/mimdolt/pages/back/upload/uploadService.js"></script>
+<script src="/mimdolt/pages/back/upload/uploadController.js"></script>
+
+<script src="/mimdolt/pages/back/optionManagement/optionController.js"></script>
+<script src="/mimdolt/pages/back/optionManagement/optionService.js"></script>
+
+<!-- HOME -->
+<script src="/mimdolt/pages/home/homeController.js"></script>
+
+<script src="/resources/js/directives.js"></script>
+
+<script src="/resources/js/owl.carousel.min.js"></script>
+<script src="/resources/js/jquery.sticky.js"></script>
+
+<script src="/resources/js/services.js"></script>
+<script src="/resources/js/main.js"></script>
+
+
+<!-- endinject -->
+
+</body>
+</html>
