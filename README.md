@@ -1,2 +1,3 @@
-# mimdolt
-This project is an online sales site.
+# mimdolt (Online shop)
+This project using Spring(MVC, Security), Hibernate and AngularJs.
+Database: Mysql 
