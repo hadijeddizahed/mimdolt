@@ -1,3 +1,3 @@
 # mimdolt (Online shop)
-This project using Spring(MVC, Security), Hibernate and AngularJs.
+This project is using Spring(MVC, Security), Hibernate and AngularJs.
 Database: Mysql 
